@@ -72,9 +72,9 @@ public class Main {
     filteredProducts.forEach(System.out::println);
     
     
-    List<Product> products= manager.getActiveProductsSortedByPrice();
+    List<Product> sortedProducts= manager.getActiveProductsSortedByPrice();
     System.out.println("Active Sorted Products: ");
-    products.forEach(System.out::println);
+    sortedProducts.forEach(System.out::println);
     
     System.out.println("Average by category: ");
 
