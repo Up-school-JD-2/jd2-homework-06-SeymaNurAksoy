@@ -12,9 +12,9 @@ public class Main {
   public static void main(String[] args) {
     ProductManager manager = new ProductManager();
     Random random = new Random();
-    manager.addProduct(new Product("1", "Product 1", 10, 9.99, "Category 1", ProductStatus.ACTIVE));
+    manager.addProduct(new Product("1", "Product 1", 10, 19.99, "Category 1", ProductStatus.ACTIVE));
     manager.addProduct(new Product("2", "Product 2", 5, 14.99, "Category 2", ProductStatus.ACTIVE));
-    manager.addProduct(new Product("3", "Product 3", 0, 19.99, "Category 1", ProductStatus.OUT_OF_STOCK));
+    manager.addProduct(new Product("3", "Product 3", 0, 0, "Category 1", ProductStatus.OUT_OF_STOCK));
     manager.addProduct(new Product("4", "Product 4", 3, 24.99, "Category 2", ProductStatus.DISCONTINUED));
 
     // ORD-122
@@ -70,5 +70,24 @@ public class Main {
                 product.getProductStatus()));
     System.out.println("Active products :");
     filteredProducts.forEach(System.out::println);
+    
+    
+    List<Product> products= manager.getActiveProductsSortedByPrice();
+    System.out.println("Active Sorted Products: ");
+    products.forEach(System.out::println);
+    
+    System.out.println("Average by category: ");
+
+    double result = manager.calculateAveragePriceInCategory("Category 2");
+    System.out.println(result);
+    
+    
+    System.out.println("The total price of the products in the category: ");
+
+    Map<String,Double> result2= manager.getCategoryPriceSum();
+    for (Map.Entry<String, Double> entry : result2.entrySet()) {
+        System.out.println(entry.getKey() + ":" + entry.getValue().toString());
+    }    
+    
   }
 }
